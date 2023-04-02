@@ -1,0 +1,150 @@
+@font-face {
+    font-family: "Jost";
+    src: url("fonts/Jost-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Jost";
+    font-weight: bold;
+    src: url("fonts/Jost-Bold.ttf");
+}
+
+@keyframes disappear { to { opacity: 0% }}
+@keyframes appear { from { opacity: 0% }}
+
+:root {
+    --fore: black;
+    --back: #e0c9a6;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --fore: white;
+        --back: black;
+    }
+
+    img {
+        filter: invert();
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+
+    background: var(--back);
+    color: var(--fore);
+
+    font-family: "Jost";
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: inherit;
+}
+
+input {
+    background: inherit;
+    color: inherit;
+
+    font-family: inherit;
+    font-size: inherit;
+
+    border-radius: 10px;
+    border: 3px solid var(--fore);
+
+    padding: 5px 10px;
+}
+
+#swap-button {
+    border-radius: 10px;
+}
+
+#swap-button:active {
+    outline: 2px solid var(--fore);
+}
+
+#swap-button > img {
+    vertical-align: middle;
+    width: 24px;
+    user-select: none;
+}
+
+.btn {
+    color: var(--fore);
+
+    border: 3px solid var(--fore);
+    border-radius: 30px;
+
+    padding: 5px 20px;
+
+    margin-left: 10px;
+}
+
+.btn:active {
+    background: var(--fore);
+    color: var(--back);
+}
+
+.inputs {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#animfield {
+    height: 80px;
+    position: relative;
+}
+
+.card {
+    background: var(--back);
+
+    border-radius: 10px;
+    border: 6px solid var(--fore);
+
+    position: absolute;
+
+    font-size: 48px;
+    font-weight: bold;
+
+    text-align: center;
+    vertical-align: middle;
+
+    width: 60px;
+    height: 80px;
+
+    user-select: none;
+
+    box-sizing: border-box;
+}
+
+.moving.card {
+    transition: 1s left;
+}
+
+.disappearing.card {
+    animation: 0.5s disappear 1s;
+    animation-fill-mode: forwards;
+}
+
+.appearing.card {
+    animation: 0.5s appear 3s;
+    animation-fill-mode: backwards;
+}
